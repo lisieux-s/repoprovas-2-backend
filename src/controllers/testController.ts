@@ -12,6 +12,13 @@ async function find(req: Request, res: Response) {
   res.send({ tests });
 }
 
+async function incrementViews(req: Request, res: Response) {
+  const { id } = req.params;
+  await testService.incrementViews(parseInt(id));
+  return res.sendStatus(200);
+}
+
 export default {
   find,
+  incrementViews
 };

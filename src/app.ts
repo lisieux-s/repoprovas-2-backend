@@ -17,15 +17,20 @@ app.use(errorHandlerMiddleware);
 
 
 app.get('/dev', async(req, res) => {
-  await prisma.teacherDiscipline.create({
+  await prisma.test.create({
     data: {
-      teacherId: 2,
-      disciplineId: 3
+      name: 'Prova maneira',
+      pdfUrl: 'http://',
+      categoryId: 2,
+      teacherDisciplineId: 3,
+      views: 0
     }
   }
   )
   res.sendStatus(201)
 })
+
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

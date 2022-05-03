@@ -6,5 +6,5 @@ const testRouter = Router();
 
 testRouter.get("/tests", ensureAuthenticatedMiddleware, testController.find);
 testRouter.get('/test/view/:id', ensureAuthenticatedMiddleware, testController.incrementViews)
-
+testRouter.post('/tests/create', ensureAuthenticatedMiddleware, testController.create)
 export default testRouter;

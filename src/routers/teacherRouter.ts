@@ -7,7 +7,8 @@ const teacherRouter = Router();
 teacherRouter.get(
   "/discipline/:id/teachers",
   ensureAuthenticatedMiddleware,
-  teacherController.findMany
+  teacherController.findByDiscipline
 );
+teacherRouter.get('/teachers', ensureAuthenticatedMiddleware, teacherController.findMany)
 
 export default teacherRouter;

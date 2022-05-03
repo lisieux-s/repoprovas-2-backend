@@ -1,4 +1,5 @@
 import { prisma } from "../database.js";
+import { CreateTestData } from '../services/testService.js'
 
 async function getTestsByDiscipline() {
   return prisma.term.findMany({
@@ -48,10 +49,33 @@ async function incrementViews(id: number) {
   })
 }
 
+async function create(createTestData: CreateTestData) {
+  console.log(createTestData)
+  const teacherDisciplineResult : any = await prisma.teacherDiscipline.findFirst({
+    where: {
+      teacherId: createTestData.teacherId,
+      disciplineId: createTestData.disciplineId
+    } 
+  })
+  console.log(teacherDisciplineResult)
+  if(!createTestData) return;
+  if(!teacherDisciplineResult) return;
+
+  //  await prisma.test.create({
+  //   data: {
+  //     name: createTestData.name,
+  //     pdfUrl: createTestData.pdfUrl,
+  //     teacherDisciplineId: teacherDisciplineResult.id,
+  //     views: 0
+  //   }
+  // })
+}
+
 
 export default {
   getTestsByDiscipline,
   getTestsByTeachers,
   findTestById,
-  incrementViews
+  incrementViews,
+  create
 };

@@ -18,7 +18,14 @@ async function incrementViews(req: Request, res: Response) {
   return res.sendStatus(200);
 }
 
+async function create(req: Request, res: Response) {
+  const test = req.body;
+  await testService.create(test);
+  return res.sendStatus(201);
+}
+
 export default {
   find,
-  incrementViews
+  incrementViews,
+  create
 };

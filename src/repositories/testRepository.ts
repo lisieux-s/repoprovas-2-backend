@@ -44,9 +44,10 @@ async function findTestById(id: number) {
 async function incrementViews(id: number) {
   return prisma.test.update({
     where: { id },
-    data: { views: {increment: 1} }
+    data: { views: { increment: 1 } }
   })
 }
+
 
 export default {
   getTestsByDiscipline,
